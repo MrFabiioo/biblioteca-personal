@@ -4,6 +4,7 @@ import Home from '../Home';
 import Books from '../Books'
 import SingIn from '../SingIn'
 import NotFound from '../NotFound'
+import NavBar from '../../Components/NavBar';
 import './App.css'
 
 const AppRoutes = ()=>{
@@ -21,6 +22,7 @@ function App() {
   return (
     <BrowserRouter>
       <AppRoutes/>
+      <NavBar/>
     </BrowserRouter>
 
   )
