@@ -1,5 +1,6 @@
 //import { useState } from 'react'
 import {useRoutes,BrowserRouter} from 'react-router-dom'
+import { RequestApiBooksProvider } from '../../Context';
 import Home from '../Home';
 import Books from '../Books'
 import SingIn from '../SingIn'
@@ -20,10 +21,12 @@ const AppRoutes = ()=>{
 
 function App() {
   return (
-    <BrowserRouter>
-      <AppRoutes/>
-      <NavBar/>
-    </BrowserRouter>
+    <RequestApiBooksProvider>
+      <BrowserRouter>
+        <AppRoutes/>
+        <NavBar/>
+      </BrowserRouter>
+    </RequestApiBooksProvider>
 
   )
 }
