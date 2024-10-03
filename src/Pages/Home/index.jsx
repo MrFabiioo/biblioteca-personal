@@ -6,6 +6,22 @@ import Card from "../../Components/Card"
 function Home() {
     const context = useContext(RequestApiBooks)    
 
+    const renderView =()=>{
+                if (context.filteredBooks?.length>0) {
+                    return(
+                        context.filteredBooks?.map(book=>(
+                            <Card key={book.id} data={book} />
+                        ))
+                    )               
+            }else{
+                return(
+                    <div>
+                        <h1>No books found</h1>
+                    </div>
+                )
+            }
+        
+    }
 
     return (
         <Layout>
@@ -13,9 +29,7 @@ function Home() {
             <input type='text' placeholder='Buscar libro' className='rounded-lg border border-black w-80 p-4 mb-4' onChange={(event)=>context.setSearchByTitle(event.target.value)}></input>
             <section className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
             {
-                context.books?.map(book=>(
-                    <Card key={book.id} data={book} />
-                ))
+                renderView()
             }
 
             </section>

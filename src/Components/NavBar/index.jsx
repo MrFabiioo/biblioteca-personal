@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
-
+import {RequestApiBooks} from '../../Context'
+import { useContext } from "react"
 function NavBar (){
     const activeStyle ='underline underline-offset-4'
+    const context = useContext(RequestApiBooks)
     return (
         <nav className='flex justify-between items-center top-0 fixed z-10 w-full py-5 px-8 text-sm font-light'>
             <ul className='flex items-center gap-3'>
@@ -12,33 +14,33 @@ function NavBar (){
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/' className ={({isActive})=> isActive ? activeStyle: undefined}>
+                    <NavLink onClick={()=>context.setSearchByCategory()} to='/' className ={({isActive})=> isActive ? activeStyle: undefined}>
                         Todo
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/novelas-historicas' className ={({isActive})=> isActive ? activeStyle: undefined}>
-                        Novelas Historicas
+                    <NavLink onClick={()=>context.setSearchByCategory('miscellaneous')} to='/miscellaneous' className ={({isActive})=> isActive ? activeStyle: undefined}>
+                    miscellaneous
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/poesia' className ={({isActive})=> isActive ? activeStyle: undefined}>
-                        Poesia
+                    <NavLink onClick={()=>context.setSearchByCategory('clothes')} to='/clothes' className ={({isActive})=> isActive ? activeStyle: undefined}>
+                    clothes
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/cuentos' className ={({isActive})=> isActive ? activeStyle: undefined}>
-                        Cuentos
+                    <NavLink onClick={()=>context.setSearchByCategory('furniture')}  to='/furniture' className ={({isActive})=> isActive ? activeStyle: undefined}>
+                    furniture
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/desarrollo-personal' className ={({isActive})=> isActive ? activeStyle: undefined}>
-                        Desarrollo personal y espiritual
+                    <NavLink onClick={()=>context.setSearchByCategory('shoes')}  to='/shoes' className ={({isActive})=> isActive ? activeStyle: undefined}>
+                    shoes
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/ciencia' className ={({isActive})=> isActive ? activeStyle: undefined}>
-                        Ciencia
+                    <NavLink onClick={()=>context.setSearchByCategory('electronics')}  to='/electronics' className ={({isActive})=> isActive ? activeStyle: undefined}>
+                    electronics
                     </NavLink>
                 </li>
             </ul>
