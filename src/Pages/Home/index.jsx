@@ -2,7 +2,7 @@ import { useContext } from "react"
 import {RequestApiBooks} from '../../Context'
 import Layout from "../../Components/Layout"
 import Card from "../../Components/Card"
-
+import BookNotFound from "../../Components/BookNotFound"
 function Home() {
     const context = useContext(RequestApiBooks)    
 
@@ -14,11 +14,7 @@ function Home() {
                         ))
                     )               
             }else{
-                return(
-                    <div>
-                        <h1>No books found</h1>
-                    </div>
-                )
+                return(<BookNotFound/>)
             }
         
     }
@@ -27,12 +23,14 @@ function Home() {
         <Layout>
             <h1>HOME</h1>
             <input type='text' placeholder='Buscar libro' className='rounded-lg border border-black w-80 p-4 mb-4' onChange={(event)=>context.setSearchByTitle(event.target.value)}></input>
+            {context.filteredBooks?.length>0 ? 
             <section className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
             {
                 renderView()
             }
 
             </section>
+            : <BookNotFound/>}
 
         </Layout>
             
