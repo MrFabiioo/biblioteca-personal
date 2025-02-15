@@ -1,18 +1,24 @@
-
+import { useNavigate } from "react-router-dom";
 
 
 function Card (data){
+const navigate = useNavigate();
+const handleClick = () => {
+    navigate(`/book/${data.data.id}`); // Redirige a /book/:id
+    };
     return(
-        <div className='bg-white cursor-pointer w-56 h-90'>
+        
+        <div onClick={handleClick} className='bg-white cursor-pointer w-56 h-90'>
             <figure className='relative mb-2 w-full h-4/5'>
                 <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-sm m-2 px-3 py-0.5'>{data.data.category.name}</span>
-                <img className='w-full h-full object-cover rounded-lg' src={data.data.images[0]} alt={data.data.title}/>
+                <img className='w-full h-full object-cover rounded-lg' src={data.data.image} alt={data.data.title}/>
             </figure>
             <p className='grid place-content-center'>
                 <span className='text-xs font-medium'>{data.data.title}</span>
-                <span className='text-sm font-light'>{data.data.price}</span>
+                <span className='text-sm font-light'>{data.data.author}</span>
             </p>
         </div>
+        
     )
 }
 

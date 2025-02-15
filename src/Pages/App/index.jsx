@@ -5,6 +5,7 @@ import Home from '../Home';
 import SingIn from '../SingIn'
 import NotFound from '../NotFound'
 import NavBar from '../../Components/NavBar';
+import BookDetails from '../../Components/BookDetails';
 import './App.css'
 
 const AppRoutes = ()=>{
@@ -16,7 +17,8 @@ const AppRoutes = ()=>{
     {path: '/shoes', element: <Home/>},
     {path: '/electronics',element:<Home/>},
     {path: '/sing-in',element:<SingIn/>},
-    {path: '/*',element:<NotFound/>}
+    {path: '/*',element:<NotFound/>},
+    {path:"/book/:id",element:<BookDetails/>}
   ])
 
   return routes;
@@ -24,7 +26,7 @@ const AppRoutes = ()=>{
 
 function App() {
   return (
-    <RequestApiBooksProvider>
+    < RequestApiBooksProvider>
       <BrowserRouter>
         <AppRoutes/>
         <NavBar/>

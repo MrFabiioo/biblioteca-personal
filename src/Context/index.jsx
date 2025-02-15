@@ -14,9 +14,10 @@ export const RequestApiBooksProvider =({children})=>{
 
 
     useEffect(()=>{
-    fetch('https://api.escuelajs.co/api/v1/products').
+    fetch('http://localhost:3001/api/v1/books').
     then(response=>response.json()).
     then(data=>setBooks(data))},[])
+  
 
     const filteredBooksByTitle = (books,searchByTitle)=>{
         console.log('books: '+ books)

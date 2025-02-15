@@ -5,7 +5,7 @@ function NavBar (){
     const activeStyle ='underline underline-offset-4'
     const context = useContext(RequestApiBooks)
     return (
-        <nav className='flex justify-between items-center top-0 fixed z-10 w-full py-5 px-8 text-sm font-light'>
+        <nav className='bg-gray-300 flex justify-between items-center top-0 fixed z-10 w-full py-5 px-8 text-sm font-light'>
             <ul className='flex items-center gap-3'>
 
                 <li className='font-bold text-lg'>
