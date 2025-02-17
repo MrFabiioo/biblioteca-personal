@@ -4,7 +4,7 @@ import Layout from '../Layout/index';
 import NotReview from "../NotReview";
 import axios from 'axios';
 import endPoints from '../../services/index';
-import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid'
+import Loading from "../Loading";
 function BookDetail() {
   const { id } = useParams(); // Captura el ID desde la URL
   const [book, setBook] = useState(null);
@@ -28,17 +28,13 @@ function BookDetail() {
   }, [id]);
 
   if (loading) {
-    return (
-      <Layout>
-        <p>Cargando...</p>
-      </Layout>
-    );
+    return null;
   }
 
   if (!book || !book.review?.title) {
     return (
       <Layout>
-        <NotReview />
+        <NotReview book={book} />
       </Layout>
     );
   }

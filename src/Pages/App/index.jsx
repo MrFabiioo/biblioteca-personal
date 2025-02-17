@@ -29,9 +29,11 @@ function App() {
   return (
     < RequestApiBooksProvider>
       <BrowserRouter>
-      <NavBar/>
-      <AppRoutes/>
-        <Footer/>
+        <div className='flex flex-col min-h-screen'>
+          <NavBar/>
+          <AppRoutes/>
+          <Footer/>
+       </div>
       </BrowserRouter>
     </RequestApiBooksProvider>
 

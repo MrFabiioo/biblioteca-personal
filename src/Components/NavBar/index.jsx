@@ -1,15 +1,32 @@
 import { NavLink } from "react-router-dom";
-import {RequestApiBooks} from '../../Context'
-import { useContext } from "react"
+import {RequestApiBooks} from '../../Context';
+import { useContext,useState,useEffect } from "react";
+import axios from "axios";
+import endPoints from "../../services";
+
 import 'flowbite'
 function NavBar (){
     const activeStyle ='underline underline-offset-4'
     const context = useContext(RequestApiBooks)
+    const [categories,setCategories] = useState([]);
+
+    useEffect(() => {
+      async function getCategories() {
+        try {
+          const response = await axios.get(endPoints.categories.getAllCategories);
+          setCategories(response.data);
+        } catch (error) {
+          console.error(error);
+        } 
+      }
+      
+      getCategories();
+    }, []);
     
     
     return (
-<nav className="bg-white border-gray-200 dark:bg-gray-900">
-  <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+<nav className="bg-white border-gray-200 dark:bg-gray-900 ">
+  <div className=" flex flex-wrap items-center justify-between mx-auto p-4">
   <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
       <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" />
       <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Biblioteca Personal</span>
@@ -17,7 +34,7 @@ function NavBar (){
   <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
       <button  type="button" className="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
         <span className="sr-only">Open user menu</span>
-        <img  className="w-8 h-8 rounded-full" src="https://pics.filmaffinity.com/Las_craonicas_de_Narnia_El_leaon_la_bruja_y_el_armario-555349345-large.jpg" alt="user photo"/>
+        <img  className="w-8 h-8 rounded-full" src="https://static.vecteezy.com/system/resources/previews/024/183/525/non_2x/avatar-of-a-man-portrait-of-a-young-guy-illustration-of-male-character-in-modern-color-style-vector.jpg" alt="user photo"/>
       </button>
       
         <div className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
@@ -56,36 +73,15 @@ function NavBar (){
                     Todo
             </NavLink>
       </li>
-      <li>
-            <NavLink  onClick={()=>context.setSearchByCategory('ciencia ficcion')} to='/ciencia-ficcion' className ={({isActive})=> `block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700  ${isActive ? activeStyle: undefined}  `}>
-                    Ciencia ficcion
+      {
+        categories?.map((categorie)=>(
+          <li>
+            <NavLink  onClick={()=>context.setSearchByCategory(`${categorie?.name}`)} to='/' className ={({isActive})=> `block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700  ${isActive ? activeStyle: undefined}  `}>
+                    {categorie.name}
             </NavLink>
       </li>
-      <li>
-            <NavLink  onClick={()=>context.setSearchByCategory('historicas')} to='/historicas' className ={({isActive})=> `block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700  ${isActive ? activeStyle: undefined}  `}>
-                    Historicas
-            </NavLink>
-
-      </li>
-      <li>
-      <     NavLink  onClick={()=>context.setSearchByCategory('espiritualidad')} to='/espiritualidad' className ={({isActive})=> `block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700  ${isActive ? activeStyle: undefined}  `}>
-                    Espiritualidad
-            </NavLink>
-      </li>
-      <li>
-            <NavLink  onClick={()=>context.setSearchByCategory('inteligencia emocional')} to='/inteligencia-emocional' className ={({isActive})=> `block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700  ${isActive ? activeStyle: undefined}  `}>
-                    Inteligencia emocional
-            </NavLink>
-      </li>
-      <li>
-            <NavLink  onClick={()=>context.setSearchByCategory('poesía')} to='/poesia' className ={({isActive})=> `block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700  ${isActive ? activeStyle: undefined}  `}>
-                    Poesia 
-            </NavLink>
-      </li>
-     
-      
-      
-
+        ))
+      }
     </ul>
   </div>
   </div>
