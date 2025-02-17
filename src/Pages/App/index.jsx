@@ -7,15 +7,16 @@ import NotFound from '../NotFound'
 import NavBar from '../../Components/NavBar';
 import BookDetails from '../../Components/BookDetails';
 import './App.css'
+import Footer from '../../Components/Footer';
 
 const AppRoutes = ()=>{
   let routes = useRoutes([
     {path: '/', element: <Home/>},
-    {path: '/miscellaneous', element: <Home/>},
-    {path: '/clothes', element: <Home/>},
-    {path: '/furniture', element: <Home/>},
-    {path: '/shoes', element: <Home/>},
-    {path: '/electronics',element:<Home/>},
+    {path: '/historicas', element: <Home/>},
+    {path: '/poesia', element: <Home/>},
+    {path: '/ciencia-ficcion', element: <Home/>},
+    {path: '/inteligencia-emocional', element: <Home/>},
+    {path: '/espiritualidad',element:<Home/>},
     {path: '/sing-in',element:<SingIn/>},
     {path: '/*',element:<NotFound/>},
     {path:"/book/:id",element:<BookDetails/>}
@@ -28,8 +29,9 @@ function App() {
   return (
     < RequestApiBooksProvider>
       <BrowserRouter>
-        <AppRoutes/>
-        <NavBar/>
+      <NavBar/>
+      <AppRoutes/>
+        <Footer/>
       </BrowserRouter>
     </RequestApiBooksProvider>
 
