@@ -40,8 +40,15 @@ function BookDetail() {
   }
 
   return (
+    <>
+    
     <Layout>
-      <div className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
+      <div className="w-full px-7">
+      <div className=" w-full h-36 rounded-xl my-3  bg-[url(https://www.explorationfilms.com/narnia/images/header.jpg)]"></div>
+      </div>
+      
+      
+      <div className="relative isolate overflow-hidden bg-white px-6 mb-24 lg:overflow-visible lg:px-0">
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <svg
           aria-hidden="true"
@@ -68,16 +75,18 @@ function BookDetail() {
           <rect fill="url(#e813992c-7d03-4cc4-a2bd-151760b470a0)" width="100%" height="100%" strokeWidth={0} />
         </svg>
       </div>
-      <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10">
+      <div className="mx-auto mt-2 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10">
         <div className="lg:col-span-1 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-1 lg:gap-x-8 lg:px-8">
           <div className="lg:pr-4">
             <div className="">
-            <p className="text-base/7 font-semibold text-indigo-600 tracking-widest">{book.title}</p>
-              <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
+            <p className="text-base/7 font-semibold text-blue-700 tracking-widest">{book.title}</p>
+              <h1 className="mt-3 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
                 {book.review?.title}
               </h1>
-              <h2 className="mt-8 text-2xl font-bold tracking-tight text-gray-900 tracking-widest">Sobre el autor: <p className="text-base/7 font-semibold text-indigo-600 tracking-widest">{book.author}</p></h2>
-              <p className="mt-6 text-base/7 text-gray-700 tracking-widest ">
+              <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900 tracking-widest">Sobre el autor: </h2> 
+              <img  className="m-3 w-20 h-20 rounded-full object-cover " src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQyYlit0amJw4L5zAar4CrefghzIKEL9QXG-0E55P8E7kyv7IdXv8Jqu4G52hSLPy5xiSnhKmsSQ3UrOJhj7kVHlQ" alt="user photo"/>
+              <p className="text-base/7 font-semibold text-blue-700 tracking-widest">{book.author}</p>
+              <p className="mt-3 text-base/7 text-gray-700 tracking-widest text-justify ">
                 {book.review?.aboutAuthor}
               </p>
             </div>
@@ -87,15 +96,24 @@ function BookDetail() {
           <img
             alt=""
             src={book.image}
-            className="w-[48rem] max-w-none rounded-xl bg-gray-900 ring-1 shadow-xl ring-gray-400/10 sm:w-[57rem]"
+            className=" w-[48rem] max-w-none rounded-xl bg-gray-900 ring-1 shadow-xl shadow-blue-500/50 ring-gray-400/10 sm:w-[57rem]"
+          />
+          <img
+            alt=""
+            src={book.image}
+            className="mt-6  w-[48rem] max-w-none rounded-xl bg-gray-900 ring-1 shadow-xl shadow-blue-500/50 ring-gray-400/10 sm:w-[57rem]"
+          />
+          <img
+            alt=""
+            src={book.image}
+            className="mt-6 w-[48rem] max-w-none rounded-xl bg-gray-900 ring-1 shadow-xl shadow-blue-500/50 ring-gray-400/10 sm:w-[57rem]"
           />
         </div>
-        
         <div className="lg:col-span-1 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-1 lg:gap-x-8 lg:px-8">
           <div className="lg:pr-4">
             <div className=" text-base/7 text-gray-700 ">
-            <h2 className="mt-4 text-2xl font-bold tracking-tight text-gray-900 tracking-widest">Introducción.</h2>
-              <p className="mt-6 tracking-widest">
+            <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900 tracking-widest">Introducción.</h2>
+              <p className="mt-3 tracking-widest text-justify">
                 {book.review?.introduction}
               </p>
               {/* <ul role="list" className="mt-8 space-y-8 text-gray-600">
@@ -122,16 +140,16 @@ function BookDetail() {
                   </span>
                 </li>
               </ul> */}
-              <h2 className="mt-4 text-2xl font-bold tracking-tight text-gray-900">Revisión.</h2>
-              <p className="mt-6 tracking-widest">
+              <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900">Revisión.</h2>
+              <p className="mt-3 tracking-widest text-justify">
                 {book.review?.review}
               </p>
-              <h2 className="mt-4 text-2xl font-bold tracking-tight text-gray-900">Conclusion.</h2>
-              <p className="mt-6 tracking-widest">
+              <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900">Conclusion.</h2>
+              <p className="mt-3 tracking-widest text-justify">
                 {book.review?.conclusion}
               </p>
-              <h2 className="mt-4 text-2xl font-bold tracking-tight text-gray-900">Critica.</h2>
-              <p className="mt-6 tracking-widest">
+              <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900">Critica.</h2>
+              <p className="mt-3 tracking-widest text-justify">
                 {book.review?.criticism}
               </p>
             </div>
@@ -140,6 +158,7 @@ function BookDetail() {
       </div>
     </div>
     </Layout>
+    </>
   );
 }
 
