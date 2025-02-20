@@ -39,12 +39,13 @@ function BookDetail() {
     );
   }
 
+
   return (
     <>
     
     <Layout>
       <div className="w-full px-7">
-        <div className="w-full h-36 rounded-xl my-3 "style={{ backgroundImage: `url(${book?.review?.bannerImage})` }}></div>
+        <div className="w-full h-36  rounded-xl my-3 "style={{ backgroundImage: `url(${book?.review?.bannerImage})` }}></div>
       </div>
       
       
@@ -92,7 +93,7 @@ function BookDetail() {
             </div>
           </div>
         </div>
-        <div className="pb-6 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden grid place-items-center">
+        <div className="-mt-12 -ml-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden hidden lg:block">
           <img
             alt=""
             src={book?.review?.imageOne}
@@ -102,12 +103,12 @@ function BookDetail() {
             alt=""
             src={book?.review?.imageTwo}
             className="mt-12  w-[21rem] max-w-none rounded-xl bg-gray-900 ring-1 shadow-xl shadow-neutral-500 ring-gray-400/10 sm:w-[57rem]"
-          />
+          /> 
           <img
             alt=""
             src={book?.review?.imageThree}
             className="mt-12 w-[21rem] max-w-none rounded-xl bg-gray-900 ring-1 shadow-xl shadow-neutral-500 ring-gray-400/10 sm:w-[57rem]"
-          />  
+          />
         </div>
         <div className="lg:col-span-1 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-1 lg:gap-x-8 lg:px-8">
           <div className="lg:pr-4">
@@ -116,6 +117,15 @@ function BookDetail() {
               <p id="2" className="mt-3 tracking-widest text-justify">
                 {book.review?.introduction}
               </p>
+
+              <div className="lg:hidden grid place-items-center ">
+              <img
+            alt=""
+            src={book?.review?.imageOne}
+            className="mt-12  w-[21rem] bg-gray-900 ring-1 shadow-xl shadow-neutral-500 ring-gray-400/10 sm:w-[57rem]"
+          /> 
+              </div>
+                             
               {/* <ul role="list" className="mt-8 space-y-8 text-gray-600">
                 <li className="flex gap-x-3">
                   <CloudArrowUpIcon aria-hidden="true" className="mt-1 size-5 flex-none text-indigo-600" />
@@ -144,10 +154,26 @@ function BookDetail() {
               <p id="3" className="mt-3 tracking-widest text-justify">
                 {book.review?.review}
               </p>
+
+                <div className="lg:hidden grid place-items-center">
+                <img
+            alt=""
+            src={book?.review?.imageTwo}
+            className="mt-12 w-[21rem] bg-gray-900 ring-1 shadow-xl shadow-neutral-500 ring-gray-400/10 sm:w-[57rem]"
+          />
+                </div>
+
               <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900">Conclusion.</h2>
               <p className="mt-3 tracking-widest text-justify">
                 {book.review?.conclusion}
               </p>
+              <div className="mt-8 lg:hidden grid place-items-center">
+              <img
+            alt=""
+            src={book?.review?.imageThree}
+            className=" w-[21rem]   bg-gray-900 ring-1 shadow-xl shadow-neutral-500  ring-gray-400/10 sm:w-[57rem]"
+          />
+              </div>
               <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900">Critica.</h2>
               <p className="mt-3 tracking-widest text-justify">
                 {book.review?.criticism}
