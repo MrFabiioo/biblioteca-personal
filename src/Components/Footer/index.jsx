@@ -13,16 +13,16 @@ function Footer(){
             </a>
             <ul className="flex flex-wrap items-center aling-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
                 <li>
-                    <a href="/" className="hover:underline me-4 md:me-6 flex"><FaHome /></a>
+                    <a target="_blank" href="/" className="hover:underline me-4 md:me-6 flex"><FaHome /></a>
                 </li>
                 <li>
-                    <a href="https://www.instagram.com/fabioortega0206/" className="hover:underline me-4 md:me-6 flex"><SlSocialInstagram /></a>
+                    <a target="_blank" href="https://www.instagram.com/fabioortega0206/" className="hover:underline me-4 md:me-6 flex"><SlSocialInstagram /></a>
                 </li>
                 <li>
-                    <a href="https://github.com/MrFabiioo" className="hover:underline me-4 md:me-6 flex"><FaGithub /></a>
+                    <a target="_blank" href="https://github.com/MrFabiioo" className="hover:underline me-4 md:me-6 flex"><FaGithub /></a>
                 </li>
                 <li>
-                    <a href="https://www.facebook.com/fabio.ortegaxd" className="hover:underline me-4 md:me-6 flex"><FaFacebook /></a>
+                    <a target="_blank" href="https://www.facebook.com/fabio.ortegaxd" className="hover:underline me-4 md:me-6 flex"><FaFacebook /></a>
                 </li>
             </ul>
         </div>
