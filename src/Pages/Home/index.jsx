@@ -52,7 +52,7 @@ function Home() {
       </div>
             <input type='text' placeholder='Buscar libro' className='rounded-lg border border-blue-700 w-80 p-4 mb-12' onChange={(event)=>context.setSearchByTitle(event.target.value)}></input>
             {context.filteredBooks?.length>0 ? 
-            <section className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
+            <section className='grid gap-4 sm:grid-cols-4 w-full max-w-screen-lg  grid-cols-2 place-items-center'>
             {
                 renderView()
             }

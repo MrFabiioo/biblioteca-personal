@@ -8,8 +8,8 @@ const handleClick = () => {
     };
     return(
         
-        <div onClick={handleClick} className='bg-white cursor-pointer w-56 h-90'>
-            <figure className='relative mb-2 w-full h-4/5'>
+        <div onClick={handleClick} className='bg-white cursor-pointer w-40 h-90 sm:w-56'>
+            <figure className='relative mb-2 w-full h-80'>
                 <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-sm m-2 px-3 py-0.5'>{data.data.category.name}</span>
                 <img className='w-full h-full object-cover rounded-lg shadow-2xl' src={data.data.image} alt={data.data.title}/>
             </figure>
