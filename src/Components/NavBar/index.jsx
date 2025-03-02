@@ -1,30 +1,42 @@
 import { NavLink } from "react-router-dom";
 import {RequestApiBooks} from '../../Context';
 import { useContext,useState,useEffect } from "react";
-import axios from "axios";
-import endPoints from "../../services";
+import { useAuth0 } from "@auth0/auth0-react";
+import {getAllCategories} from "../../services/category.service"
 
 import 'flowbite'
 function NavBar (){
-    
+    const {user,loginWithRedirect,logout,isAuthenticated,getAccessTokenSilently}= useAuth0();
     const context = useContext(RequestApiBooks)
     const [categories,setCategories] = useState([]);
+    
 
     useEffect(() => {
       async function getCategories() {
+        if (!isAuthenticated) return;
+    
         try {
-          const response = await axios.get(endPoints.categories.getAllCategories);
-          setCategories(response.data);
+          const token = await getAccessTokenSilently({
+            authorizationParams: {
+              audience: `https://api.librery.co`,
+              scope: "openid profile email read:endpoints",
+            },
+          });
+    
+          const response = await getAllCategories(token);
+          
+          setCategories(response);
         } catch (error) {
-          console.error(error);
-        } 
+          console.error("Error obteniendo categorías:", error);
+        }
       }
-      
+    
       getCategories();
-    }, []);
+    }, [isAuthenticated, getAccessTokenSilently]); 
     
     
     return (
+      isAuthenticated ? (
 <nav className="bg-white border-gray-200 dark:bg-gray-900 ">
   <div className=" flex flex-wrap items-center justify-between mx-auto p-4">
   <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
@@ -34,17 +46,17 @@ function NavBar (){
   <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
       <button  type="button" className="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
         <span className="sr-only">Open user menu</span>
-        <img  className="w-8 h-8 rounded-full" src="https://static.vecteezy.com/system/resources/previews/024/183/525/non_2x/avatar-of-a-man-portrait-of-a-young-guy-illustration-of-male-character-in-modern-color-style-vector.jpg" alt="user photo"/>
+        <img  className="w-8 h-8 rounded-full" src={user.picture} alt="user photo"/>
       </button>
       
         <div className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
         <div className="px-4 py-3">
-          <span className="block text-sm text-gray-900 dark:text-white">Fabio Ortega</span>
-          <span className="block text-sm  text-gray-500 truncate dark:text-gray-400">fabio_ortega_0206@hotmail.com</span>
+          <span className="block text-sm text-gray-900 dark:text-white">{user.name}</span>
+          <span className="block text-sm  text-gray-500 truncate dark:text-gray-400">{user.email}</span>
         </div>
         <ul className="py-2" aria-labelledby="user-menu-button">
           <li>
-            <a href="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Inicio</a>
+            <a href="#" onClick={()=>loginWithRedirect()} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Log In</a>
           </li>
           <li>
             <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Opciones</a>
@@ -53,7 +65,7 @@ function NavBar (){
             <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Temas</a>
           </li>
           <li>
-            <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Salir</a>
+            <a href="#" onClick={()=>logout()} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Salir</a>
           </li>
         </ul>
       </div>
@@ -86,6 +98,7 @@ function NavBar (){
   </div>
   </div>
 </nav>
+      ):(<button onClick={()=>loginWithRedirect()}>Login</button>)
 
     );
 }

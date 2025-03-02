@@ -1,4 +1,6 @@
 import {createContext, useState,useEffect} from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import {getAllBooks} from "../services/book.service"
 
 export const RequestApiBooks = createContext()
 
@@ -12,11 +14,30 @@ export const RequestApiBooksProvider =({children})=>{
     // get by category
     const [searchByCategory,setSearchByCategory] = useState(null);
 
+    const{isAuthenticated,getAccessTokenSilently}=useAuth0();
+
 
     useEffect(()=>{
-    fetch('http://localhost:3001/api/v1/books').
-    then(response=>response.json()).
-    then(data=>setBooks(data))},[])
+        async function getBooks(){
+            if(!isAuthenticated) return;
+            
+            try {
+                const token = await getAccessTokenSilently({
+                    authorizationParams: {
+                        audience: `https://api.librery.co`,
+                        scope: "openid profile email read:endpoints",
+                      },  
+                });
+
+                const response = await getAllBooks(token);
+                setBooks(response);
+            } catch (error) {
+                throw new Error(" Encontramos un error en: ",error);
+                
+            }
+        }
+        getBooks();
+    },[isAuthenticated,getAccessTokenSilently])
   
 
     const filteredBooksByTitle = (books,searchByTitle)=>{

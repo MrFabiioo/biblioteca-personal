@@ -3,9 +3,10 @@ import {RequestApiBooks} from '../../Context'
 import Layout from "../../Components/Layout"
 import Card from "../../Components/Card"
 import BookNotFound from "../../Components/BookNotFound"
+import { useAuth0 } from "@auth0/auth0-react"
 function Home() {
     const context = useContext(RequestApiBooks)    
-    
+    const {logout}=useAuth0();
     
     const renderView =()=>{
                 if (context.filteredBooks?.length>0) {
@@ -23,6 +24,7 @@ function Home() {
 
     return (
         <Layout>
+          <button onClick={()=>{logout()}} >Logout</button>
             {/* <h1 className="mt-6 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8" >Pagina principal </h1> */}
             <div className="absolute inset-0 -z-10 overflow-hidden">
         <svg
