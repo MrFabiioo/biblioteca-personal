@@ -21,7 +21,6 @@ function BookDetail() {
   useEffect(() => {
     async function getBook() {
       setLoading(true);
-  
       try {
         let token = null;
         if (isAuthenticated) {
@@ -56,9 +55,9 @@ function BookDetail() {
     getBook();
   }, [id, isAuthenticated, getAccessTokenSilently]);
 
-  // if (loading) {
-  //   return <Loading />; // Ahora mostramos un indicador de carga
-  // }
+  if (loading) {
+    return <Loading />; // Ahora mostramos un indicador de carga
+  }
 
   if (accessDenied) {
     return (
@@ -166,6 +165,13 @@ function BookDetail() {
             <p className="mt-3 tracking-widest text-justify">
               {book?.review?.introduction}
             </p>
+            <div className="lg:hidden grid place-items-center ">
+              <img
+            alt=""
+            src={book?.review?.imageOne}
+            className="mt-12  w-[21rem] bg-gray-900 ring-1 shadow-xl shadow-neutral-500 ring-gray-400/10 sm:w-[57rem]"
+          /> 
+              </div>
 
             <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900">
               Revisión.
@@ -173,6 +179,13 @@ function BookDetail() {
             <p className="mt-3 tracking-widest text-justify">
               {book?.review?.review}
             </p>
+            <div className="lg:hidden grid place-items-center">
+                <img
+            alt=""
+            src={book?.review?.imageTwo}
+            className="mt-12 w-[21rem] bg-gray-900 ring-1 shadow-xl shadow-neutral-500 ring-gray-400/10 sm:w-[57rem]"
+          />
+                </div>
 
             <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900">
               Conclusión.
@@ -180,6 +193,14 @@ function BookDetail() {
             <p className="mt-3 tracking-widest text-justify">
               {book?.review?.conclusion}
             </p>
+
+            <div className="mt-8 lg:hidden grid place-items-center">
+              <img
+            alt=""
+            src={book?.review?.imageThree}
+            className=" w-[21rem]   bg-gray-900 ring-1 shadow-xl shadow-neutral-500  ring-gray-400/10 sm:w-[57rem]"
+          />
+              </div>
 
             <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900">
               Crítica.

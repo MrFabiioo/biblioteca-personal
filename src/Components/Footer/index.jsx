@@ -4,7 +4,7 @@ import { FaHome } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 function Footer(){
     return(
-<footer className="bg-white  shadow-sm dark:bg-gray-900 mt-auto">
+<footer className="bg-white  shadow-sm dark:bg-gray-900 mt-6">
     <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
             <a href="https://flowbite.com/" className="flex items-center mb-8 sm:mb-0 space-x-3 rtl:space-x-reverse">
