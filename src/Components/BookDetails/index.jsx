@@ -33,11 +33,11 @@ function BookDetail() {
         }
   
         const response = await getOneBook(id, token);
-        console.log("Respuesta de getOneBook:", response);
+        
         setBook(response);
   
       } catch (error) {
-        console.error("Error obteniendo el libro:", error);
+        
         if (error.response.data?.message === "Invalid Compact JWS" || "Unauthorized") {
           setAccessDenied(true);
         

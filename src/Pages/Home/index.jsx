@@ -23,9 +23,9 @@ function Home() {
 
   return (
     <Layout>
-      { isAuthenticated &&
+      {/* { isAuthenticated &&
       <button onClick={() => logout()}>Logout</button>
-      }
+      } */}
       {/* SVG Background */}
       {!isAuthenticated && <div className="h-screen w-screen grid grid place-items-center"> <button className="w-64 text-white bg-gradient-to-r from-blue-700 to-blue-900 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-3xl px-5 py-2.5 text-center me-2 mb-2" onClick={()=>loginWithRedirect()}>Login</button> </div>} 
       <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -51,7 +51,7 @@ function Home() {
           <input
             type="text"
             placeholder="Buscar libro"
-            className="rounded-lg border border-blue-700 w-80 p-4 mb-12"
+            className="rounded-lg border border-blue-700 w-80 p-4 mb-12 mt-6"
             onChange={(event) => context.setSearchByTitle(event.target.value)}
           />
           
