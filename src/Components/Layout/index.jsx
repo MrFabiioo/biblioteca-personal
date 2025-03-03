@@ -1,7 +1,7 @@
 
 function Layout ({children}){
     return(
-        <div className='flex flex-col items-center mt-1'>
+        <div className='flex flex-col items-center mt-1 mb-6'>
             {children}
         </div>
     )
