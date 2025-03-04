@@ -18,8 +18,8 @@ function NavBar (){
         try {
           const token = await getAccessTokenSilently({
             authorizationParams: {
-              audience: `https://api.librery.co`,
-              scope: "openid profile email read:endpoints",
+              audience: import.meta.env.VITE_AUTH0_AUDIENCE,
+              scope: import.meta.env.VITE_AUTH0_SCOPE,
             },
           });
     
