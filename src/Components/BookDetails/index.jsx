@@ -2,8 +2,6 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Layout from "../Layout";
 import NotReview from "../NotReview";
-import axios from "axios";
-import endPoints from "../../services/index";
 import Loading from "../Loading";
 import Unauthorized from "../Unauthorized";
 import { useAuth0 } from "@auth0/auth0-react";
