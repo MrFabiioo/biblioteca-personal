@@ -41,7 +41,6 @@ export const RequestApiBooksProvider =({children})=>{
   
 
     const filteredBooksByTitle = (books,searchByTitle)=>{
-        console.log('books: '+ books)
         return books?.filter(book => book.title.toLowerCase().includes(searchByTitle.toLowerCase()))
     }
     const filteredBooksByCategory = (books, searchByCategory) => {
