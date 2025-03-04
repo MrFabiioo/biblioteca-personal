@@ -7,7 +7,7 @@ import Loading from "../../Components/Loading";
 
 function Home() {
   const context = useContext(RequestApiBooks);
-  const { logout, isAuthenticated,loginWithRedirect,isLoading} = useAuth0();
+  const {isAuthenticated,loginWithRedirect,isLoading} = useAuth0();
 
   const renderView = () => {
     if (context.filteredBooks?.length > 0) {
