@@ -7,9 +7,9 @@ const endPoints ={
         getBook:(id)=>`${API}/${VERSION}/books/${id}`,
         getAllBooks:`${API}/${VERSION}/books`,
     },
-    reviews:{
-        getAllReviews:`${API}/${VERSION}/review`,
-        getReview:(id)=>`${API}/${VERSION}/review/${id}`,
+    categories:{
+        getAllCategories:`${API}/${VERSION}/category`,
+        getCategory:(id)=>`${API}/${VERSION}/category/${id}`,
     }
 }
 

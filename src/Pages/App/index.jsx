@@ -1,7 +1,6 @@
 import {useRoutes,BrowserRouter} from 'react-router-dom'
 import { RequestApiBooksProvider } from '../../Context';
 import Home from '../Home';
-import SingIn from '../SingIn'
 import NotFound from '../NotFound'
 import NavBar from '../../Components/NavBar';
 import BookDetails from '../../Components/BookDetails';
@@ -18,7 +17,6 @@ const AppRoutes = ()=>{
     {path: '/ciencia-ficcion', element: <Home/>},
     {path: '/inteligencia-emocional', element: <Home/>},
     {path: '/espiritualidad',element:<Home/>},
-    {path: '/sing-in',element:<SingIn/>},
     {path: '/*',element:<NotFound/>},
     {path:"/book/:id",element:<BookDetails/>}
   ])
