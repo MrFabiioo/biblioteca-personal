@@ -51,7 +51,7 @@ function Home() {
           <input
             type="text"
             placeholder="Buscar libro"
-            className="rounded-lg border border-blue-700 w-80 p-4 mb-12 mt-6"
+            className="font-mono rounded-lg border border-blue-700 w-80 p-4 mb-12 mt-6"
             onChange={(event) => context.setSearchByTitle(event.target.value)}
           />
           

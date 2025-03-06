@@ -12,12 +12,13 @@ function BookDetail() {
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
   const [accessDenied, setAccessDenied] = useState(false);
-  const {isAuthenticated,getAccessTokenSilently}=useAuth0();
+  const {isAuthenticated,getAccessTokenSilently, isLoading}=useAuth0();
 
   
 
   useEffect(() => {
     async function getBook() {
+       if (isLoading) return;
       setLoading(true);
       try {
         let token = null;
@@ -158,7 +159,7 @@ function BookDetail() {
 
           <div className="lg:pr-4">
             <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900">
-              Introducción.
+              Reseña:
             </h2>
             <p className="mt-3 tracking-widest text-justify">
               {book?.review?.introduction}
@@ -171,9 +172,9 @@ function BookDetail() {
           /> 
               </div>
 
-            <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900">
+            {/* <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900">
               Revisión.
-            </h2>
+            </h2> */}
             <p className="mt-3 tracking-widest text-justify">
               {book?.review?.review}
             </p>
@@ -185,9 +186,9 @@ function BookDetail() {
           />
                 </div>
 
-            <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900">
+            {/* <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900">
               Conclusión.
-            </h2>
+            </h2> */}
             <p className="mt-3 tracking-widest text-justify">
               {book?.review?.conclusion}
             </p>
