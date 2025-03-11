@@ -40,7 +40,7 @@ function NavBar (){
 <nav className="bg-white border-gray-200 dark:bg-gray-900 ">
   <div className=" flex flex-wrap items-center justify-between mx-auto p-4">
   <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-      <img src="src/images/Creo.png" className="h-8 rounded-xl" alt="Flowbite Logo" />
+      <img src="/src/images/Creo.png" className="h-8 rounded-xl" alt="Flowbite Logo" />
       <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Biblioteca Personal</span>
   </a>
   <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
