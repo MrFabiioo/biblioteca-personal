@@ -3,8 +3,8 @@ import {RequestApiBooks} from '../../Context';
 import { useContext,useState,useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import {getAllCategories} from "../../services/category.service"
-
 import 'flowbite'
+
 function NavBar (){
     const {user,loginWithRedirect,logout,isAuthenticated,getAccessTokenSilently}= useAuth0();
     const context = useContext(RequestApiBooks)
@@ -37,7 +37,7 @@ function NavBar (){
     
     return (
       isAuthenticated &&
-<nav className="bg-gray-900 border-gray-200 dark:bg-gray-900 ">
+<nav className="bg-blue-200 border-gray-200 dark:bg-gray-900 ">
   <div className=" flex flex-wrap items-center justify-between mx-auto p-4">
   <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
       <img src="/images/Creo.png" className="h-8 rounded-xl" alt="Flowbite Logo" />
@@ -79,7 +79,7 @@ function NavBar (){
     </button>
   </div>
   <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
-    <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+    <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-blue-200 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
       <li>
             <NavLink  onClick={()=>context.setSearchByCategory()} to='/' className ="font-mono block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0">
                     Todo
