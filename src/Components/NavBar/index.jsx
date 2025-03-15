@@ -3,7 +3,7 @@ import {RequestApiBooks} from '../../Context';
 import { useContext,useState,useEffect,useRef } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import {getAllCategories} from "../../services/category.service"
-//import 'flowbite'
+import 'flowbite'
 
 function NavBar (){
     const {user,loginWithRedirect,logout,isAuthenticated,getAccessTokenSilently}= useAuth0();
