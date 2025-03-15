@@ -1,14 +1,17 @@
 import { NavLink } from "react-router-dom";
 import {RequestApiBooks} from '../../Context';
-import { useContext,useState,useEffect } from "react";
+import { useContext,useState,useEffect,useRef } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import {getAllCategories} from "../../services/category.service"
-import 'flowbite'
+//import 'flowbite'
 
 function NavBar (){
     const {user,loginWithRedirect,logout,isAuthenticated,getAccessTokenSilently}= useAuth0();
     const context = useContext(RequestApiBooks)
     const [categories,setCategories] = useState([]);
+    const [open,setOpen]= useState(false);
+    const menuRef = useRef(null);
+    const buttonRef = useRef(null);
     
 
     useEffect(() => {
@@ -33,10 +36,31 @@ function NavBar (){
     
       getCategories();
     }, [isAuthenticated, getAccessTokenSilently]); 
+
+    useEffect(() => {
+      function handleClickOutside(event) {
+        // Verificar si el clic fue fuera del menú Y del botón
+        if (
+          menuRef.current &&
+          !menuRef.current.contains(event.target) &&
+          buttonRef.current &&
+          !buttonRef.current.contains(event.target)
+        ) {
+          setTimeout(() => setOpen(false), 100); // Evita el conflicto del estado
+        }
+      }
+  
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, []);
     
+
     
     return (
       isAuthenticated &&
+      <>
 <nav className="bg-blue-200 border-gray-200 dark:bg-gray-900 ">
   <div className=" flex flex-wrap items-center justify-between mx-auto p-4">
   <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
@@ -44,33 +68,10 @@ function NavBar (){
       <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Biblioteca Personal</span>
   </a>
   <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-      <button  type="button" className="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+      <button ref={buttonRef} onClick={(e) => {e.stopPropagation(); setOpen((prev) => !prev);}} type="button" className="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
         <span className="sr-only">Open user menu</span>
         <img  className="w-8 h-8 rounded-full" src={user.picture} alt="user photo"/>
       </button>
-      
-        <div className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
-        <div className="px-4 py-3">
-          <span className="font-mono block text-sm text-gray-900 dark:text-white">{user.name}</span>
-          <span className="font-mono block text-sm  text-gray-500 truncate dark:text-gray-400">{user.email}</span>
-        </div>
-        <ul className="py-2" aria-labelledby="user-menu-button">
-          <li>
-            <a href="#" onClick={()=>loginWithRedirect()} className="font-mono block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Log In</a>
-          </li>
-          <li>
-            <a href="#" className="font-mono block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Opciones</a>
-          </li>
-          <li>
-            <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white font-mono">Temas</a>
-          </li>
-          <li>
-            <a href="#" onClick={()=>logout()} className="font-mono block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Salir</a>
-          </li>
-        </ul>
-      </div>
-      
-      
       <button data-collapse-toggle="navbar-user" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-user" aria-expanded="false">
         <span className="sr-only">Open main menu</span>
         <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -78,6 +79,7 @@ function NavBar (){
         </svg>
     </button>
   </div>
+  
   <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
     <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-blue-200 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
       <li>
@@ -97,7 +99,32 @@ function NavBar (){
     </ul>
   </div>
   </div>
-</nav>
+</nav>  
+      { open && 
+        <div ref={menuRef} className="w-48 z-50 absolute right-0 top-12  mt-2 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
+        <div className="px-4 py-3">
+          <span className="font-mono block text-sm text-gray-900 dark:text-white">{user.name}</span>
+          <span className="font-mono block text-sm  text-gray-500 truncate dark:text-gray-400">{user.email}</span>
+        </div>
+        <ul className="py-2" aria-labelledby="user-menu-button">
+          <li>
+            <a href="#" onClick={()=>loginWithRedirect()} className="font-mono block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Log In</a>
+          </li>
+          <li>
+            <a href="#" className="font-mono block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Opciones</a>
+          </li>
+          <li>
+            <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white font-mono">Temas</a>
+          </li>
+          <li>
+            <a href="#" onClick={()=>logout()} className="font-mono block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Salir</a>
+          </li>
+        </ul>
+      </div>
+      }
+        
+
+      </>
     );
 }
 export default NavBar
