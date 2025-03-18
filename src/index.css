@@ -1,0 +1,14 @@
+@media (max-width: 372px) {
+    .prueba-css {
+      gap: 250px;
+      margin-top: 6px;
+    }
+
+    .acara-css{
+      top:5.1rem !important;
+      right: 180px !important;
+    }
+
+  }
+
+  

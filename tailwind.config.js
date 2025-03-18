@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'xs': '400px', // Nueva clase "xs" para menos de 400px
+      }
+    },
   },
   plugins: [],
 }
