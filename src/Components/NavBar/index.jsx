@@ -113,10 +113,10 @@ function NavBar (){
             <a href="#" onClick={()=>loginWithRedirect()} className="font-mono block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Log In</a>
           </li>
           <li>
-            <a href="#" className="font-mono block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Opciones</a>
+            <a href="https://manager-library.vercel.app/Libros" className="font-mono block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Agregar Libro</a>
           </li>
           <li>
-            <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white font-mono">Temas</a>
+            <a href="https://manager-library.vercel.app/resenas" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white font-mono">Editar Reseña</a>
           </li>
           <li>
             <a href="#" onClick={()=>logout()} className="font-mono block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Salir</a>
