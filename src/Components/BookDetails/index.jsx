@@ -126,17 +126,17 @@ function BookDetail() {
               <img
                 alt=""
                 src={book?.review?.imageOne}
-                className=" w-[21rem] max-w-none rounded-xl bg-gray-900 ring-1 shadow-xl shadow-neutral-500  ring-gray-400/10 sm:w-[57rem]"
+                className="  rounded-xl bg-gray-900 ring-1 shadow-xl shadow-neutral-500  ring-gray-400/10 sm:w-[57rem]"
               />
               <img
                 alt=""
                 src={book?.review?.imageTwo}
-                className="mt-12  w-[21rem] max-w-none rounded-xl bg-gray-900 ring-1 shadow-xl shadow-neutral-500 ring-gray-400/10 sm:w-[57rem]"
+                className="mt-12  rounded-xl bg-gray-900 ring-1 shadow-xl shadow-neutral-500 ring-gray-400/10 sm:w-[57rem]"
               />
               <img
                 alt=""
                 src={book?.review?.imageThree}
-                className="mt-12 w-[21rem] max-w-none rounded-xl bg-gray-900 ring-1 shadow-xl shadow-neutral-500 ring-gray-400/10 sm:w-[57rem]"
+                className="mt-12  rounded-xl bg-gray-900 ring-1 shadow-xl shadow-neutral-500 ring-gray-400/10 sm:w-[57rem]"
               />
             </div>
             <div className="lg:col-span-1 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-1 lg:gap-x-8 lg:px-8">
