@@ -52,7 +52,7 @@ function BookDetail() {
   }, [id, isAuthenticated, getAccessTokenSilently]);
 
   if (loading) {
-    return <Loading />; // Ahora mostramos un indicador de carga
+    return <Loading />; 
   }
 
   if (accessDenied) {
