@@ -142,7 +142,7 @@ function BookDetail() {
             <div className="lg:col-span-1 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-1 lg:gap-x-8 lg:px-8">
               <div className="lg:pr-4">
                 <div className=" text-base/7 text-gray-700 ">
-                  <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900 tracking-widest">Introducción.</h2>
+                  <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900 tracking-widest">Revisión.</h2>
                   <p id="2" className="mt-3 tracking-widest text-justify">
                     {book.review?.introduction}
                   </p>
@@ -200,7 +200,7 @@ function BookDetail() {
                 </li>
 
               </ul> */}
-                  <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900">Revisión.</h2>
+                  
                   <p id="3" className="mt-3 tracking-widest text-justify">
                     {book.review?.review}
                   </p>
@@ -211,7 +211,7 @@ function BookDetail() {
                       className="mt-12 w-[21rem] bg-gray-900 ring-1 shadow-xl shadow-neutral-500 ring-gray-400/10 sm:w-[57rem]"
                     />
                   </div>
-                  <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900">Conclusion.</h2>
+                  
                   <p className="mt-3 tracking-widest text-justify">
                     {book.review?.conclusion}
                   </p>
@@ -222,7 +222,7 @@ function BookDetail() {
                       className=" w-[21rem]   bg-gray-900 ring-1 shadow-xl shadow-neutral-500  ring-gray-400/10 sm:w-[57rem]"
                     />
                   </div>
-                  <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900">Critica.</h2>
+                  
                 <p className="mt-3 tracking-widest text-justify">
                     {book.review?.criticism}
                   </p>
