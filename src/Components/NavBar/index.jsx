@@ -103,7 +103,7 @@ function NavBar (){
   </div>
 </nav>  
       { open && 
-        <div ref={menuRef} className="acara-css w-48 z-50 absolute right-0 top-12  mt-2 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600 " >
+        <div ref={menuRef} className="mi-clase-4 mi-clase-3 mi-clase-2 mi-clase acara-css w-48 z-50 absolute right-0 top-11  mt-2 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600 " >
         <div className="px-4 py-3">
           <span className="font-mono block text-sm text-gray-900 dark:text-white">{user.name}</span>
           <span className="font-mono block text-sm  text-gray-500 truncate dark:text-gray-400">{user.email}</span>
