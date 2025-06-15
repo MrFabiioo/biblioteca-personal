@@ -1,8 +1,110 @@
-# React + Vite
+# 📚 Front Biblioteca Personal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web moderna para gestionar una colección de libros y sus reseñas. Desarrollada con React + Vite y diseñada para ofrecer una experiencia fluida al usuario, incorpora autenticación segura con Auth0, estilos con TailwindCSS y funcionalidades CRUD completas.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tecnologías utilizadas
+
+| Categoría       | Tecnología                            |
+|-----------------|----------------------------------------|
+| Framework       | [React](https://reactjs.org/)          |
+| Bundler         | [Vite](https://vitejs.dev/)            |
+| Autenticación   | [Auth0](https://auth0.com/)            |
+| Estilos         | [TailwindCSS](https://tailwindcss.com/) |
+| Íconos UI       | Heroicons, React Icons                 |
+| UI Components   | [Flowbite](https://flowbite.com/)      |
+| Routing         | [React Router](https://reactrouter.com/) |
+| Peticiones HTTP | [Axios](https://axios-http.com/)       |
+
+---
+
+## 🧩 Funcionalidades principales
+
+- 🔐 Autenticación de usuarios con Auth0
+- 🗃️ Panel administrativo para gestión de libros
+- 📖 CRUD completo para libros y sus reseñas
+- 🎨 UI responsiva y moderna con Tailwind y Flowbite
+- ⚡ Rutas protegidas y navegación con React Router
+
+---
+
+## 📷 Capturas de pantalla
+
+---
+
+![image](https://github.com/user-attachments/assets/ec8e40d9-e06f-4983-81f5-dbae33bc4e20)
+
+
+---
+
+![image](https://github.com/user-attachments/assets/7a6be804-6a7d-4c23-a9d8-b4df46038ad1)
+
+
+---
+
+## 🛠 Instalación y ejecución en local
+
+1. Clona este repositorio:
+
+```bash
+git clone https://github.com/MrFabiioo/biblioteca-personal.git
+cd biblioteca-personal
+```
+
+2. Instala las dependencias:
+   
+```bash
+npm install
+```
+
+3. Configura tus variables de entorno en .env.local:
+
+```bash
+VITE_AUTH0_DOMAIN=tu-dominio.auth0.com
+VITE_AUTH0_CLIENT_ID=tu-client-id
+VITE_AUTH0_CALLBACK_URL=http://localhost:3000
+```
+
+4. Inicia el servidor de desarrollo:
+```bash
+npm run dev
+```
+
+📁 biblioteca-personal/
+├── public/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── routes/
+│   ├── services/
+│   └── App.jsx
+├── .env.local
+├── tailwind.config.js
+├── vite.config.js
+└── package.json
+
+
+🥑 Scripts disponibles
+```bash
+npm run dev       # Inicia servidor de desarrollo
+npm run build     # Compila el proyecto para producción
+npm run preview   # Previsualiza la build
+npm run lint      # Ejecuta linter
+
+```
+
+ Estado del proyecto
+✅ Funcional
+🛠️ En desarrollo — mejoras futuras incluyen:
+
+* Paginación
+
+* Soporte para múltiples usuarios y roles
+
+🤝 Contribuciones
+Este es un proyecto personal. ¡Toda sugerencia, fork o pull request es bienvenido!
+
+📄 Licencia
+MIT © 2025 Jose Fabio Ortega Estrada
+
