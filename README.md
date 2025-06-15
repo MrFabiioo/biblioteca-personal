@@ -91,6 +91,7 @@ npm run dev
 
 
 🥑 Scripts disponibles
+
 ```bash
 npm run dev       # Inicia servidor de desarrollo
 npm run build     # Compila el proyecto para producción
@@ -108,6 +109,7 @@ npm run lint      # Ejecuta linter
 * Soporte para múltiples usuarios y roles
 
 🤝 Contribuciones
+
 Este es un proyecto personal. ¡Toda sugerencia, fork o pull request es bienvenido!
 
 📄 Licencia
