@@ -71,18 +71,23 @@ VITE_AUTH0_CALLBACK_URL=http://localhost:3000
 npm run dev
 ```
 
+## 📁 Estructura del proyecto
+
+```text
 📁 biblioteca-personal/
 ├── public/
 ├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── routes/
-│   ├── services/
-│   └── App.jsx
-├── .env.local
-├── tailwind.config.js
-├── vite.config.js
-└── package.json
+│   ├── components/         # Componentes reutilizables
+│   ├── pages/              # Páginas de la app
+│   ├── routes/             # Definición de rutas y navegación
+│   ├── services/           # Servicios/API helpers
+│   └── App.jsx             # Componente raíz
+├── .env.local              # Variables de entorno locales
+├── tailwind.config.js      # Configuración de Tailwind
+├── vite.config.js          # Configuración de Vite
+└── package.json            # Dependencias y scripts
+```
+
 
 
 🥑 Scripts disponibles
